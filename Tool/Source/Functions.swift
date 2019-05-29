@@ -159,8 +159,8 @@ func export(with settings: Settings, format: POEditor.ExportFileType = .json, fo
 	for code in settings.languages.sorted()
 	{
 		let xcode = xCodeLocaleFromPOEditorCode(code: code)
-		
-		print("\nExporting " + Locale(identifier: "en").localizedString(forIdentifier: xcode)! + " [" + xcode + "]...")
+        let localCode = Locale(identifier: "en").localizedString(forIdentifier: xcode) ?? xcode
+		print("\nExporting " + localCode + " [" + xcode + "]...")
 		
 		var outputFolderList: [URL] = [exportURL.appendingPathComponent(xcode, isDirectory: true)]
         
